@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Play:wght@400;700&display=swap');
+:root {
+    --text-color: #212121;
+    --background-color: #E4E4E4;
+    --font-size: 48px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", serif;
+    font-size: var(--font-size);
+    color: var(--text-color);
+    background: var(--background-color);
+    font-weight: 800;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 33px;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+.game__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 20px;
+}
+.field {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 100%;
+    height: 100vh;
+    max-height: 580px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 50px;
+    background: #ffffff;
+}
+
+.field__cell {
+    width: 100%;
+    max-width: 144px;
+    height: 144px;
+    background: var(--background-color);
+    border-radius: 16px;
+    box-shadow: 10px 10px 0px var(--text-color);
+}
+.cell__inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: no-repeat center center;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.field__cell:hover {
+    cursor: pointer;
+    box-shadow: 6px 6px 0px var(--text-color);
+    transition: all 0.3s ease-in-out;
+    
+}
+
+
+.button {
+    padding: calc(var(--font-size) / 2) calc(var(--font-size) * 2);
+}
