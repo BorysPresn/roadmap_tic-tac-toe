@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Play:wght@400;700&display=swap');
+
 :root {
     --text-color: #212121;
     --background-color: #E4E4E4;
@@ -27,8 +28,9 @@ body {
     gap: 33px;
     width: 100%;
     max-width: 580px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
+
 .game__item {
     display: flex;
     flex-direction: column;
@@ -37,6 +39,7 @@ body {
     background: #ffffff;
     border-radius: 20px;
 }
+
 .field {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -44,36 +47,76 @@ body {
     width: 100%;
     height: 100vh;
     max-height: 580px;
-    margin: 0 auto;
-    margin-top: 50px;
     padding: 50px;
     background: #ffffff;
 }
 
 .field__cell {
-    width: 100%;
-    max-width: 144px;
-    height: 144px;
-    background: var(--background-color);
+    aspect-ratio: 1;
+    background-color: var(--background-color);
     border-radius: 16px;
     box-shadow: 10px 10px 0px var(--text-color);
-}
-.cell__inner {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: no-repeat center center;
-    opacity: 0;
     transition: all 0.2s ease-in-out;
+    position: relative;
 }
+
 .field__cell:hover {
     cursor: pointer;
     box-shadow: 6px 6px 0px var(--text-color);
-    transition: all 0.3s ease-in-out;
-    
 }
 
+.field__cell::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 75%;
+    opacity: 0;
+}
+
+.field__cell:not([data-fill]):hover::before {
+    background-image: var(--next-image-url);
+    opacity: 0.2;
+}
+
+.field__cell[data-fill="X"]::before {
+    background: url(./assets/X.png) no-repeat center center;
+    opacity: 1;
+}
+
+.field__cell[data-fill="O"]::before {
+    background: url(./assets/O.png) no-repeat center center;
+    opacity: 1;
+}
 
 .button {
+    letter-spacing: 2%;
     padding: calc(var(--font-size) / 2) calc(var(--font-size) * 2);
+}
+
+.restart {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    color: #FFFFFF;
+    background-color: var(--text-color);
+    cursor: pointer;
+}
+
+.restart::after {
+    content: "";
+    width: 70px;
+    height: 70px;
+    background: url(./assets/restart.png) no-repeat center center;
+}
+
+.game__item--hidden {
+    display: none;
 }
